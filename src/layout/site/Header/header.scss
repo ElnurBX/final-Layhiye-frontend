@@ -1,0 +1,60 @@
+.SiteHeader {
+    display: flex;
+    flex-direction: column;
+font-family: 'Roboto', sans-serif;
+
+
+   
+}
+ .top-bar{
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 4px 40px;
+        font-size: 12px;
+        background-color: #232323;
+        color: #ffffff;
+        
+        color: #ffffffcc;
+    }
+    .icons{
+        margin: 0 10px;
+        align-items: center;
+        i{
+            font-size: 13px;
+            
+
+            padding: 3px 10px;
+        }
+    }
+    .contacts{
+        align-items: center;
+    }
+.main-header{
+    padding: 0 40px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+}
+.header-menu-nav{
+    
+    a{
+        text-decoration: none;
+        color: #000000;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 0 30px;
+        font-weight: 700;
+    }
+    a:hover{
+        color: #3b71fe;
+    }
+}
+.buttons{
+    display: flex;
+ 
+}
+.currency{
+    width: 100xp !important;
+}

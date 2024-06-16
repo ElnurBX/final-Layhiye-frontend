@@ -1,0 +1,42 @@
+
+.basketBtnImg{
+    width: 20px;
+    height: 20px;
+}
+.basketBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+    padding: 0;
+    i{
+        font-size: 20px;
+    }
+}
+.basket-dropdowns{
+    position: relative;
+}
+.BasketDropdown{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 320px;
+    padding: 25px 30px !important;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+
+}
+@media screen and (max-width: 768px) {
+    .basketBtn{
+        box-shadow:none;
+        border: 0px solid #ccc;
+    }
+    
+}
