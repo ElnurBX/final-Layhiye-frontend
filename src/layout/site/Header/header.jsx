@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 import MainContext from '../../../context/context';
 import axios from 'axios';
 import BasketDropdowns from '../../../components/BasketDropdawn/BasketDropdowns';
+import HeaderLogin from '../../../components/headerLogin/HeaderLogin';
+import HeaderRegister from '../../../components/HeaderRegister/HeaderRegister';
 
+import AuthAcount from '../../../components/AuthAcount/AuthAcount';
 const Header = () => {
     const [currencies, setCurrencies] = useState([]);
-    const { currency, setCurrency } = useContext(MainContext);
+    const { currency, setCurrency ,authToken } = useContext(MainContext);
     const currencyLogo = useMemo(() => ['€', '$'], []);
-    
+    const [authModal, setAuthModal] = useState(true);
     useEffect(() => {
         axios.get('https://api.fastforex.io/fetch-multi?from=USD&to=EUR,USD&api_key=9c50c6e5a3-299d6b666b-sf6l85')
             .then((response) => {
@@ -100,7 +103,7 @@ const Header = () => {
                         <ul className="dropdown-menu currency  " >
                             {currencies.map(([key, value], index) => (
                                 <li key={key} className="dropdown-item   " >
-                                    <button className="dropdown-item" onClick={() => changeCurrency(key, value, index)}>
+                                    <button key={key} className="dropdown-item" onClick={() => changeCurrency(key, value, index)}>
                                         {key} {currencyLogo[index]}
                                     </button>
                                 </li>
@@ -108,30 +111,34 @@ const Header = () => {
                         </ul>
                     </div>
                     <BasketDropdowns />
-                    <button type="button" class="basketBtn " data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <i class="fa-regular fa-user"></i>
+                   {
+                    authToken ? <AuthAcount/>:  <button type="button" className="basketBtn " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i className="fa-regular fa-user"></i>
                     </button>
+                   }
                 </div>
-    
 
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <button type="button" className="btn m-0 fa-solid  fa-x" data-bs-dismiss="modal" aria-label="Close"></button>
+                            
+                            <div className="login-register m-auto">
+                                <button className='btn' onClick={() => setAuthModal(true)}>Sing in</button>
+                                <button className='btn' onClick={() => setAuthModal(false)} >Sing up</button>
+                            </div>
                     </div>
-                    <div class="modal-body">
-                        ...
+                    <div className="modal-body">
+                        { 
+                            
+                            authModal ? <HeaderLogin/> : <HeaderRegister authModal={authModal} setAuthModal={setAuthModal}/>
+                        }
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                        
                     </div>
                 </div>
-                </div>
+                    </div>
             </div>
         </header>
     );

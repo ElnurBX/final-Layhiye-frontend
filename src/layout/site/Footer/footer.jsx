@@ -37,6 +37,7 @@ return (
                 <div className="col-12 col-xl-3 col-md-6"></div>
             </div>
         </div>
+        
     </footer>
 )
 }
