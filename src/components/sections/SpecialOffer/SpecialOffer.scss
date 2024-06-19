@@ -1,0 +1,17 @@
+.SpecialOffer{
+    margin: 40px 0;
+    &__item{
+        display: block;
+        padding: 10px;
+        overflow: hidden;
+        border-radius: 40px;
+        img{   
+            width: 100%;
+            transition: 0.5s;
+            transform: scale(1.08);
+            &:hover{
+                transform: scale(1.18);
+            }
+        }
+    }
+}

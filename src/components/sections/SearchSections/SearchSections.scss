@@ -1,0 +1,12 @@
+.search-sections{
+    margin: 40px 0;
+    &__item{
+        height: 120px;
+        background-color: #f8f8f8;
+        transform: translate(0, -50%);
+        border-radius: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

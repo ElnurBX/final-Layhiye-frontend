@@ -38,5 +38,7 @@
         box-shadow:none;
         border: 0px solid #ccc;
     }
-    
+    .BasketDropdown{
+        right: -90px;
+    }
 }

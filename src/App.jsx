@@ -14,6 +14,7 @@ function App() {
     const [authToken, setAuthToken] = useState(Cookies.get('auth_token') );
     const router = createBrowserRouter(ROUTES);
     const [UserData, setUserData] = useState({});
+    const [Citys, setCitys] = useState([]);
     useEffect(() => {
         console.log(authToken);
         if(!authToken){
@@ -32,7 +33,7 @@ function App() {
     },[authToken])
 
     return (
-        <MainContext.Provider value={{ data, setData, loading, setLoading, error, setError, currency, setCurrency ,authToken, setAuthToken,UserData, setUserData}}>
+        <MainContext.Provider value={{ data, setData, loading, setLoading, error, setError, currency, setCurrency ,authToken, setAuthToken,UserData, setUserData,Citys, setCitys}}>
             <RouterProvider router={router} />
         </MainContext.Provider>
     );

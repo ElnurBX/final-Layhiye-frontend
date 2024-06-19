@@ -5,6 +5,8 @@ import Add from "../pages/admin/add/add"
 import Error from "../pages/error/error/error"
 import SiteRoot from "../pages/site/SiteRoot"
 import Home from "../pages/site/home/home"
+import ClientRoot from "../pages/client/ClientRoot"
+import ClientDashboard from "../pages/client/dashboard/Dashboard"
 
 const ROUTES =[
     {
@@ -14,6 +16,19 @@ const ROUTES =[
             {
                 path:"",
                 element:<Home/>
+            }
+        ]
+    },{
+        path:"/client",
+        element: <ClientRoot/>,
+        children:[
+            {
+                path:"dashboard",
+                element:<ClientDashboard/>
+            },
+            {
+                path:"orderHistory",
+                element:<Dashboard/>
             }
         ]
     },

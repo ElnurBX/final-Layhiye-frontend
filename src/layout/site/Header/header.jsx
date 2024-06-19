@@ -95,8 +95,8 @@ const Header = () => {
                         </ul>
                     </nav>
                 </div>
-                <div className="buttons gap-3">
-                    <div className="dropdown">
+                <div className="buttons  gap-3">
+                    <div className="dropdown d-none d-md-block d-xl-block d-xxl-block">
                         <button className="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span className="fw-bold">{currency.name}</span>
                         </button>

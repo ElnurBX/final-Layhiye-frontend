@@ -1,0 +1,135 @@
+.adminAddFormContainer{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    .adminAddForm{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        padding: 30px 0;
+        background: linear-gradient(135deg,#003eda ,#3B71FE , #3b72fc  ,#2f69fd , #003eda );
+        color: #fff;
+        input{
+            max-width: 600px;
+            width: 90%;
+            background: #fff;
+            border: 1px solid #dedede;
+            border-radius: 10px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26px;
+            color:  #3B71FE;
+            padding: 10px 16px;
+            margin-bottom: 20px;
+        }
+        input[ type="file"] {
+            padding: 0;
+            margin:20px 0;
+            max-width: 300px;
+            width: 70%;
+            max-height: 300px;
+            height: 250px;
+
+            &::before{
+                content: "+";
+                padding: 100px;
+                background: #fff;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                text-align: left;
+                position: relative;
+                margin: 0;
+                font-size: 50px;
+                line-height: 1.5;
+                line-height: 35px;
+                color: #1998ff;
+                display: block;
+                text-align: center;
+            }
+      
+        }
+        label{
+            text-align: left;
+            font-size: large;
+        }
+        .Remove{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    }
+}
+
+.FormSelectDetails{
+    display: block;
+    max-width: 600px;
+    width: 90%;
+
+    background: #fff;
+    border-radius:10px ;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    .FormSelectSummary{
+        display: block;
+        width: 100%;
+        border: 1px solid #dedede;
+        border-radius: 10px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 26px;
+        color:  #3B71FE;
+        padding: 10px 16px;
+
+    }
+    .FromSelected{
+        background: #0000000f;
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        border: 1px solid #dedede;
+        border-radius: 10px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 26px;
+        color:  #3B71FE;
+        padding: 10px 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+       
+    }
+    .FormSelect{
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        border: 1px solid #dedede;
+        border-radius: 10px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 26px;
+        color:  #3B71FE;
+        padding: 10px 16px;
+        background: #f2faff9d;
+    } 
+    &__item{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+            border: 1px solid #dedede;
+            width: 200px;
+            height: 44px;
+            border-radius: 12px;
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+            padding: 15px 10px;
+            gap: 1px;
+            
+        }
+}
