@@ -3,7 +3,7 @@ import './TableDitails.scss';
 import { Subdashbourd } from './Subdashbourd';
 
 const TableDetails = ({ keyName, content ,i,modelname}) => {
-    const [HotelsModal,setHotelsModal]=useState(false)
+    const [ModelModal,setModelModal]=useState(false)
     if (keyName === 'imgs') {
         return (
             <details>
@@ -19,25 +19,29 @@ const TableDetails = ({ keyName, content ,i,modelname}) => {
         );
     } 
     
-    else if (keyName === 'hotels' || keyName === 'rooms' || keyName === 'reviews' || keyName === 'users' || keyName === 'partners' || keyName === 'facilities' || keyName === 'city' || keyName === 'rules' || keyName === 'images') {
+    else if (keyName === 'hotels'|| keyName === "hotel" || keyName === " citys"||keyName === 'rooms' || keyName === 'reviews' || keyName === 'users' || keyName === 'partners' || keyName === 'facilities' || keyName === 'city' || keyName === 'rules' || keyName === 'images') {
         return (
             <>
                 <button 
                     type="button" 
-                    onClick={()=>setHotelsModal(!HotelsModal)}
+                    onClick={()=>setModelModal(!ModelModal)}
                     className='btn btn-success'
                 >
                     <h1 className=''>{keyName}</h1>
                 </button>
                 
-                            <div className={HotelsModal?"HotelModal  ":"HotelModal d-none   "}>
-                               <div className="HotelModal__header"> <button type="button" className="HotelModal__close btn" onClick={()=>setHotelsModal(!HotelsModal)}>x</button> <h3>{keyName}</h3></div>
-                                <Subdashbourd Modeldata={content} title={keyName} />
+                            <div className={ModelModal ? "HotelModal  ":"HotelModal d-none   "}>
+                               <div className="HotelModal__header"> <button type="button" className="HotelModal__close btn" onClick={()=>setModelModal(!ModelModal)}>x</button> <h3>{keyName}</h3></div>
+                              {
+                              <Subdashbourd keyName={keyName} content={content} i={i} modelname={modelname}/> 
+
+                              }
                             </div>
                   
             </>
         );
     } else {
+        console.log(content);
         return <>Not Available</>;
     }
 };

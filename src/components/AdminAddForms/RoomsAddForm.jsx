@@ -5,14 +5,13 @@ import FormSelectElements from './FormSelectedElements/FormSelectElements';
 import './AdminAddForm.scss';
 import FormSelectOne from './FormSelectedElements/FormSelectOne';
 
-
-const HotelAddForm = () => {
+const RoomAddForm = () => {
     const [id, setId] = useState('');
     const last = (array) => array[array.length - 1];
     const [facilities, setFacilities] = useState([]);
     const [citys, setCitys] = useState([]);
-    const [Hotels, setHotels] = useState([]);
-    
+    const [hotels, setHotels] = useState([]);
+
     useEffect(() => {
         axios.get('http://localhost:8080/api/facilities').then(res => {
             setFacilities(res.data);
@@ -20,12 +19,10 @@ const HotelAddForm = () => {
         axios.get('http://localhost:8080/api/citys').then(res => {
             setCitys(res.data);
         });
-        axios.get('http://localhost:8080/api/Hotels').then(res => {
+        axios.get('http://localhost:8080/api/hotels').then(res => {
             setHotels(res.data);
         });
     }, []);
-
-   
 
     return (
         <div>
@@ -39,7 +36,7 @@ const HotelAddForm = () => {
                     price: 0,
                     facilities: [],
                     city: [],
-                    Rooms: []
+                    hotel: ''
                 }}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     axios.post('http://localhost:8080/api/rooms', values).then(res => {
@@ -47,8 +44,9 @@ const HotelAddForm = () => {
                         setId(newRoomId);
                         alert('Added successfully');
                         setSubmitting(false);
-                        
+                        console.log(values);
                     }).catch(error => {
+                        console.log(values);
                         alert('Failed to add room');
                         setSubmitting(false);
                     });
@@ -66,9 +64,9 @@ const HotelAddForm = () => {
                     resetForm
                 }) => (
                     <div className="adminAddFormContainer">
-                        <form className={id ?   'd-none' :'adminAddForm'} onSubmit={handleSubmit}>
-                            <label htmlFor="title" className="form-label"  > Title</label>
-                            <input 
+                        <form className={id ? 'd-none' : 'adminAddForm'} onSubmit={handleSubmit}>
+                            <label htmlFor="title" className="form-label">Title</label>
+                            <input
                                 placeholder='Title'
                                 id="title"
                                 type="text"
@@ -78,7 +76,8 @@ const HotelAddForm = () => {
                                 value={values.title}
                             />
                             {errors.title && touched.title && errors.title}
-                            <label htmlFor="size" className="form-label"> Size</label>
+
+                            <label htmlFor="size" className="form-label">Size</label>
                             <input
                                 id="size"
                                 type="number"
@@ -122,6 +121,16 @@ const HotelAddForm = () => {
                             />
                             {errors.children && touched.children && errors.children}
 
+                            <label htmlFor="description" className="form-label">Description</label>
+                            <input
+                                id="description"
+                                type="text"
+                                name="description"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.description}
+                            />
+                            {errors.description && touched.description && errors.description}
                             <label htmlFor="price" className="form-label">Price</label>
                             <input
                                 id="price"
@@ -132,16 +141,18 @@ const HotelAddForm = () => {
                                 value={values.price}
                             />
                             {errors.price && touched.price && errors.price}
+
                             <FormSelectElements name={"Facilities"} model={facilities} FormikFunk={setFieldValue} />
-                            <FormSelectOne name={"hotels"} model={Hotels} FormikFunk={setFieldValue} /> 
-                            <FormSelectOne name={"citys"} model={citys} FormikFunk={setFieldValue}/>
+                            <FormSelectOne name={"Hotel"} model={hotels} FormikFunk={setFieldValue} />
+                            <FormSelectOne name={"City"} model={citys} FormikFunk={setFieldValue} />
+
                             <button className='btn btn-light' type="submit" disabled={isSubmitting}>
                                 Submit
                             </button>
                         </form>
-                        {id==='' ?<></>: 
+                        {id === '' ? <></> : 
                             <div>
-                                <HotelAddImgForm id={id} resetAllForms={resetForm} setId={setId}  />
+                                <RoomAddImgForm id={id} resetAllForms={resetForm}  setId={setId} />
                             </div>
                         }
                     </div>
@@ -151,20 +162,21 @@ const HotelAddForm = () => {
     );
 };
 
-export default HotelAddForm;
+export default RoomAddForm;
 
-const HotelAddImgForm = ({ id, resetAllForms,setId  }) => {
-    const NoPhotoNext=(resetForm  )=>{
-                        resetForm();
-                        resetAllForms();
-                        setId('');
+const RoomAddImgForm = ({ id, resetAllForms, setId }) => {
+    const NoPhotoNext = (resetForm) => {
+        resetForm();
+        resetAllForms();
+        setId('');
     }
+
     const removeItem = (id) => {
         axios.delete(`http://localhost:8080/api/rooms/${id}`).then(() => {
             setId('');
-          
         });
     };
+
     return (
         <div>
             <Formik
@@ -176,7 +188,7 @@ const HotelAddImgForm = ({ id, resetAllForms,setId  }) => {
                         formData.append('imgs', img);
                     });
 
-                    axios.post(`http://localhost:8080/api/upload/rooms/${id}`, formData, {
+                    axios.post(`http://localhost:8080/api/upload/Rooms/${id}`, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
@@ -187,8 +199,11 @@ const HotelAddImgForm = ({ id, resetAllForms,setId  }) => {
                         resetAllForms();
                         setId('');
                     }).catch(error => {
+                        console.log(error, id, values);
                         alert('Failed to add images');
                         setSubmitting(false);
+                    }).finally(() => {
+                        
                     });
                 }}
             >
@@ -199,37 +214,38 @@ const HotelAddImgForm = ({ id, resetAllForms,setId  }) => {
                     resetForm
                 }) => (
                     <>
-                    <form className='adminAddForm'  onSubmit={handleSubmit}>
-                        
-                        <button type='button' className='btn btn-light Remove' onClick={() => removeItem(id)}><i class="fa-solid fa-arrow-left"></i>  Remove</button>
-                        <label htmlFor="mainImg"> Main Image:</label>
-                        <input
-                            id='mainImg'
-                            type="file"
-                            name="mainImg"
-                            onChange={(event) => {
-                                setFieldValue("mainImg", event.currentTarget.files[0]);
-                            }}
-                        />
-                        <label htmlFor="imgs">Gallery:</label>
-                        <input
-                            id="imgs"
-                            type="file"
-                            name="imgs"
-                            multiple
-                            onChange={(event) => {
-                                setFieldValue("imgs", event.currentTarget.files);
-                            }}
-                        />
-                        <div className=" d-flex gap-1">
-                            <button className='btn btn-light' type="submit" disabled={isSubmitting}>
-                                Submit <i class="fa-solid fa-check"></i>
+                        <form className='adminAddForm' onSubmit={handleSubmit}>
+                            <button type='button' className='btn btn-light Remove' onClick={() => removeItem(id)}>
+                                <i className="fa-solid fa-arrow-left"></i> Remove
                             </button>
-                            <button className='btn btn-light' onClick={()=>NoPhotoNext(resetForm)}>
-                               Next <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </form>
+                            <label htmlFor="mainImg">Main Image:</label>
+                            <input
+                                id='mainImg'
+                                type="file"
+                                name="mainImg"
+                                onChange={(event) => {
+                                    setFieldValue("mainImg", event.currentTarget.files[0]);
+                                }}
+                            />
+                            <label htmlFor="imgs">Gallery:</label>
+                            <input
+                                id="imgs"
+                                type="file"
+                                name="imgs"
+                                multiple
+                                onChange={(event) => {
+                                    setFieldValue("imgs", event.currentTarget.files);
+                                }}
+                            />
+                            <div className="d-flex gap-1">
+                                <button className='btn btn-light' type="submit" disabled={isSubmitting}>
+                                    Submit <i className="fa-solid fa-check"></i>
+                                </button>
+                                <button className='btn btn-light' onClick={() => NoPhotoNext(resetForm)}>
+                                    Next <i className="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </form>
                     </>
                 )}
             </Formik>

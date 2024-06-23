@@ -1,12 +1,25 @@
 .search-sections{
     margin: 40px 0;
+    z-index: 100;
+    position: relative;
     &__item{
-        height: 120px;
-        background-color: #f8f8f8;
+        padding:40px ;
+        background-color: #ffffff;
+        border: 1px solid #dedede;
         transform: translate(0, -50%);
         border-radius: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
+}
+.btn-search {
+    width: 90%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:  "DM Sans", sans-serif;
+    font-weight: 700;
+    gap: 10px;
 }

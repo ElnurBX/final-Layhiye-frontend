@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import TableDetails from './TableDitails';
+import AdminEditForm from '../AdminEditForm/AdminEditForm';
 
 export const DashbourdTable = ({ Model }) => {
     const [models, setModels] = useState([]);
@@ -45,8 +46,8 @@ export const DashbourdTable = ({ Model }) => {
                 <img width={'50px'} height={'50px'} src={`http://localhost:8080/uploads/${Model}/${content}`} alt="" />
             )
         }
-        else if(key === 'description'){
-            const x = content.slice(0, 20)
+        else if(key === 'description'||key==="loc"){
+            const x = key
 
             return <details title={content}>
                 <summary>{x}</summary>
@@ -55,6 +56,7 @@ export const DashbourdTable = ({ Model }) => {
         }
         return content;
     };
+    
     const DelletItem=(id,Model)=>{
         axios.delete(`http://localhost:8080/api/${Model}/${id}`).then(res=>{
             setModels([...res.data])
@@ -78,7 +80,9 @@ export const DashbourdTable = ({ Model }) => {
                             {keys.map((key, idx) => (
                                 <td key={idx}>{renderCellContent(model[key], key, idx,Model)}</td>
                             ))}
-                            <td><button type="button" className="btn btn-warning" >Edit</button></td>
+                            <td>
+                                <AdminEditForm Model={Model} İnitialAllValues={model} keys={keys} ids={model._id}/>
+                            </td>
                             <td><button type="button" className="btn btn-danger" onClick={()=>DelletItem(model._id,Model)}>Delete</button></td>
                         </tr>
                     ))}

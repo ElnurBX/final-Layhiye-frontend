@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './footer.scss'
 const Footer = () => {
 return (
-    <footer>
+    <footer className='footer'>
         <div className="container">
             <div className="row">
                 <div className="col-12 col-xl-3 col-md-6">
@@ -37,7 +37,14 @@ return (
                 <div className="col-12 col-xl-3 col-md-6"></div>
             </div>
         </div>
-        
+        <div className="container ">
+            <div className="row">
+                <div className="col-12  col-md-6 p-0"><p>© Copyright Traveler 2022</p></div>
+                <div className="col-12 col-md-6 d-flex justify-content-end p-0">
+                    <img src="https://modtel.travelerwp.com/wp-content/uploads/2022/06/Frame-3182.svg" alt="" />
+                </div>
+            </div>
+        </div>
     </footer>
 )
 }

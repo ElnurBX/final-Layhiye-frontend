@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
-import MainContext from '../../../context/context';
+// import MainContext from '../../../context/context';
 import { DashbourdTable } from '../../../components/DashbourdTable/DashbourdTable';
 
 const Dashboard = () => {
-    const { data, setdata } = useContext(MainContext);
+
 
     const sections = [
         { title: 'Citys', model: 'Citys' },
@@ -14,7 +14,7 @@ const Dashboard = () => {
         { title: 'Reviews', model: 'Reviews' },
         { title: 'Users', model: 'Users' },
         { title: 'Patniors', model: 'Patniors' },
-        // { title: 'Country', model: 'Country' },
+        { title: 'Country', model: 'Country' },
     ];
 
     return (
@@ -46,7 +46,7 @@ const Dashboard = () => {
                                     <div className="modal-dialog modal-fullscreen">
                                         <div className="modal-content">
                                             <div className="modal-header">
-                                                <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                <h1 className="modal-title fs-5" id="exampleModalLabel">{section.title}</h1>
                                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div className="modal-body">

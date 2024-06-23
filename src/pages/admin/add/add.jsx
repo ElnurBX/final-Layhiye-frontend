@@ -1,19 +1,20 @@
 
-    import React, { useContext } from 'react'
+    import React from 'react'
     import { Helmet } from 'react-helmet'
-    import MainContext from '../../../context/context'
+    // import MainContext from '../../../context/context'
     import CityAddForm from '../../../components/AdminAddForms/CityAddForm'
     import FaciliticsAddForm from '../../../components/AdminAddForms/FaciliticsAddForm'
 import RoomsAddForm from '../../../components/AdminAddForms/RoomsAddForm'
 import HotelAddForm from '../../../components/AdminAddForms/HotelAddForm'
+import CountryAddForm from '../../../components/AdminAddForms/CountryAddForm'
     const Add = () => {
-        const {data,setdata} = useContext(MainContext)
+
         const sections = [
             { title: 'Citys', model: 'Citys' , element: <CityAddForm/>},
             { title: 'Hotels', model: 'Hotels',element:<HotelAddForm/> },
             { title: 'Rooms', model: 'Rooms' ,element:<RoomsAddForm/>},
             { title: 'Facilities', model: 'Facilities' ,element:<FaciliticsAddForm/>},
-            // { title: 'Country', model: 'Country' },
+            { title: 'Country', model: 'Country' ,element:<CountryAddForm/> },
         ];
         return (
         <>

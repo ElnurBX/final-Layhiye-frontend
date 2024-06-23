@@ -1,8 +1,30 @@
 import React, { useContext, useEffect } from "react";
 import Slider from "react-slick";
-import './Destinations.scss';
 import axios from "axios";
 import MainContext from "../../../context/context";
+import "./Destinations.scss";
+// Custom Arrow Components
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "" }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "" }}
+      onClick={onClick}
+    />
+  );
+}
 
 function Destinations() {
   const { Citys, setCitys } = useContext(MainContext);
@@ -21,6 +43,8 @@ function Destinations() {
     autoplay: false,
     speed: 2000,
     autoplaySpeed: 2000,
+    nextArrow: <SampleNextArrow />, 
+    prevArrow: <SamplePrevArrow />, 
     responsive: [
       {
         breakpoint: 1200,

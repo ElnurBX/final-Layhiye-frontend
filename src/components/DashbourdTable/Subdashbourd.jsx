@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import TableDetails from './TableDitails';
 
-export const Subdashbourd = ({ Modeldata, title }) => {
+
+export const Subdashbourd = ({ content, keyName }) => {
     const [keys, setKeys] = useState([]);
+    
 
     const extractKeys = (data) => {
         const keysSet = new Set();
@@ -15,12 +17,36 @@ export const Subdashbourd = ({ Modeldata, title }) => {
     };
 
     useEffect(() => {
-        setKeys(extractKeys(Modeldata));
-    }, [Modeldata]);
-
-    const renderCellContent = (content, key) => {
+        setKeys(extractKeys(content));
+    }, [content ]);
+    
+    const renderCellContent = (content, key, index,Model) => {
         if (typeof content === 'object' && content !== null) {
-            return <TableDetails keyName={key} content={content} />;
+            return <TableDetails key={index} keyName={key} content={content} modelname={Model} />;
+        }
+        else if (key === 'logo' || key === 'profileImage') {
+            if(key === 'logo'){
+            return(
+                <img width={'40px'} height={'40px'} src={`http://localhost:8080/uploads/facilities/${content}`} alt="" />
+            )
+            }else{
+                return(
+                    <img width={'40px'} height={'40px'} src={`http://localhost:8080/uploads/users/${content}`} alt="" />
+                )
+            }
+        }
+        else if (key === 'mainImg') {
+            return (
+                <img width={'50px'} height={'50px'} src={`http://localhost:8080/uploads/${Model}/${content}`} alt="" />
+            )
+        }
+        else if(key === 'description'){
+            const x = content.slice(0, 20)
+
+            return <details title={content}>
+                <summary>{x}</summary>
+                <p>{content}</p>
+                </details>
         }
         return content;
     };
@@ -37,14 +63,18 @@ export const Subdashbourd = ({ Modeldata, title }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {Modeldata.map((model, index) => (
+                    {content.map((model, index) => 
+                    {
+                        return(
                         <tr key={index}>
                             <th scope="row">{index + 1}</th>
                             {keys.map((key, idx) => (
                                 <td key={idx}>{renderCellContent(model[key], key)}</td>
                             ))}
                         </tr>
-                    ))}
+                    )
+                    }
+                    )}
                 </tbody>
             </table>
         </div>

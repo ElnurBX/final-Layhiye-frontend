@@ -11,10 +11,9 @@ import AuthAcount from '../../../components/AuthAcount/AuthAcount';
 const Header = () => {
     const [currencies, setCurrencies] = useState([]);
     const { currency, setCurrency ,authToken } = useContext(MainContext);
-    const currencyLogo = useMemo(() => ['€', '$'], []);
-    const [authModal, setAuthModal] = useState(true);
+    const currencyLogo = useMemo(() => ['€', '$','₼'], []);
     useEffect(() => {
-        axios.get('https://api.fastforex.io/fetch-multi?from=USD&to=EUR,USD&api_key=9c50c6e5a3-299d6b666b-sf6l85')
+        axios.get('https://api.fastforex.io/fetch-multi?from=USD&to=EUR,USD,AZN&api_key=9c50c6e5a3-299d6b666b-sf6l85')
             .then((response) => {
                 setCurrencies(Object.entries(response.data.results));
                 if (localStorage.getItem('currency')) {
@@ -25,9 +24,9 @@ const Header = () => {
             })
             .catch(error => console.error("Error fetching currency data:", error));
     }, [setCurrency, currencyLogo]);
-
+  const [authModal, setAuthModal] = useState(true);
     const changeCurrency = (key, value, index) => {
-        const roundedValue = Math.round(value * 100) / 100; // Round to two decimal places
+        const roundedValue = Math.round(value * 100) / 100; 
         setCurrency({ name: key, value: currencyLogo[index], coefficient: roundedValue });
         localStorage.setItem('currency', JSON.stringify({ name: key, value: currencyLogo[index], coefficient: roundedValue }));
     }
@@ -65,16 +64,38 @@ const Header = () => {
                 </div>
             </div>
             <div className="main-header  d-flex justify-content-between align-items-center">
-                <button className="btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                <button className="btn d-xl-none " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
                     <i className="fa-solid fa-bars"></i>
                 </button>
-                <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabIndex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-                    <div className="offcanvas-header">
-                        <h5 className="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false"  id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                    <div className="offcanvas-header ">
+                        <button type="button" className="btn text-secondary" data-bs-dismiss="offcanvas" aria-label="Close"><i className="fa-solid fa-chevron-left"></i></button>
                     </div>
                     <div className="offcanvas-body">
-                        <p>Try scrolling the rest of the page to see this option in action.</p>
+                        <nav className="offcanvas-nav">
+                            <ul>
+                                <li><Link to='/'>Home</Link></li>
+                                <li><Link to='/about'>About</Link></li>
+                                <li><Link to='/contact'>Contact</Link></li>
+                                <li><Link to='/search'>Search</Link></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div className="offcanvas-footer">
+                    <div className="dropdown  text-primary">
+                        <button className="btn dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span className="fw-bold">{currency.name}</span>
+                        </button>
+                        <ul className="dropdown-menu currency  " >
+                            {currencies.map(([key, value], index) => (
+                                <li key={key} className="dropdown-item   " >
+                                    <button key={key} className="dropdown-item" onClick={() => changeCurrency(key, value, index)}>
+                                        {key} {currencyLogo[index]}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                     </div>
                 </div>
                 <div className="main-header-logo">
@@ -85,7 +106,7 @@ const Header = () => {
                         <img src="https://modtel.travelerwp.com/wp-content/uploads/2022/04/Mobile-Color-2.svg" alt="Mobile Logo" />
                     </Link>
                 </div>
-                <div className="main-header-menu d-none d-md-block d-xl-block d-xxl-block">
+                <div className="main-header-menu d-none  d-xl-block d-xxl-block">
                     <nav>
                         <ul className='d-flex header-menu-nav gap-3'>
                             <li><Link to='/'>Home</Link></li>
@@ -118,7 +139,7 @@ const Header = () => {
                    }
                 </div>
 
-                     <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                     <div className="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                     <div className="modal-header">

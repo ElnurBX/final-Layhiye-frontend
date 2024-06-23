@@ -1,0 +1,65 @@
+.Clientsay {
+    padding: 50px 0;
+
+    &__content{
+        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+        padding: 50px;
+        border-radius: 20px;
+        background-color: #ffffff;
+        border: 1px solid #dedede;
+        margin: 10px;
+    }
+    .slider-container {
+      position: relative;
+  
+      .slick-prev,
+      .slick-next {
+
+        z-index: 1;
+        background: #fff !important;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        &::before{
+            
+            box-shadow: none;
+        }
+      }
+  
+      .slick-prev {
+
+        color: black;
+        box-sizing: border-box;
+        top: -20px;
+        left: auto;
+        position: absolute !important;
+        right: 60px !important;
+      }
+  
+      .slick-next {
+        top: -20px;
+        position: absolute !important;
+        right: -10px !important; 
+      }
+    }
+    .slick-dots li.slick-active  button:before{
+        color: #3B71FE;
+        transform: scale(2);
+    }
+    .slick-dots  button:before{
+        color: #6a6a6a;
+        transform: scale(1.9);
+    }
+  }
+@media screen and (max-width: 576px) {
+  .slick-prev,
+  .slick-next{
+    display: none !important;
+  }
+}
+.star{
+  color: #ffb21d;
+}

@@ -7,6 +7,9 @@ import SiteRoot from "../pages/site/SiteRoot"
 import Home from "../pages/site/home/home"
 import ClientRoot from "../pages/client/ClientRoot"
 import ClientDashboard from "../pages/client/dashboard/Dashboard"
+import Test from "../pages/site/test/Test"
+import AboutPage from "../pages/site/AboutPage/AboutPage"
+import ContactPage from "../pages/site/ContactPage/ContactPage"
 
 const ROUTES =[
     {
@@ -16,6 +19,18 @@ const ROUTES =[
             {
                 path:"",
                 element:<Home/>
+            },{
+                path:"about",
+                element:<AboutPage/>
+            },
+            {
+                path:"contact",
+                element:<ContactPage/>
+            }
+            ,
+            {
+                path:"/test",
+                element:<Test/>
             }
         ]
     },{

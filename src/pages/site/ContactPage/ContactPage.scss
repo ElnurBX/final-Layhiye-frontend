@@ -1,0 +1,55 @@
+.ContactPage{
+    padding: 50px 0;
+    font-family:  "DM Sans", sans-serif;
+    iframe{
+        height: 540px;
+    }
+    .lh-2{
+        line-height: 28px;
+    }
+    &__contact-info{
+        i{
+            color: #3b71fe;
+        }
+        li{
+            padding: 28px 0;
+            border-bottom: 1px solid #dedede;
+            display: flex;
+            gap: 10px;
+        }
+    }
+    &__form{
+        padding: 50px ;
+        border-radius: 30px;
+        border: 1px solid #dedede;
+        box-shadow:  0 0 5px 0 rgba(0, 0, 0, 0.1);
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          
+            button,textarea,input{
+                padding: 10px 16px;
+                width: 100%;
+                border: 1px solid #dedede;
+                border-radius: 10px;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 26px;
+                color:  #3B71FE;
+            }
+          button[type="submit"]{
+            width: 150px;
+            background: #3B71FE;
+            color: #dedede;
+          }
+        }
+}
+}
+@media screen and (max-width: 576px) {
+    .ContactPage{
+       iframe{
+        height: 300px;
+       }
+    }
+}

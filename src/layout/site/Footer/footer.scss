@@ -1,4 +1,5 @@
-footer{
+.footer{
+    background: #F7F8FA;
     padding: 50px 0 0;
     font-family: 'Roboto', sans-serif;
     h3{
@@ -8,12 +9,17 @@ footer{
     ul{
         padding:20px 0 0 ;
     }
-    a{
+    p, a{
         font-size: 14px;
         padding: 5px 2px ;
         text-decoration: none;
         color:#727272 ;
         line-height: 26px;
         font-family: 'Roboto', sans-serif;
+    }
+    &__bottom{
+        margin-top: 10px;
+        padding: 20px 0;
+        border-top: #cfcfcfb8 1px solid;
     }
 }

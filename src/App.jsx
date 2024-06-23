@@ -15,8 +15,8 @@ function App() {
     const router = createBrowserRouter(ROUTES);
     const [UserData, setUserData] = useState({});
     const [Citys, setCitys] = useState([]);
+    
     useEffect(() => {
-        console.log(authToken);
         if(!authToken){
             return
         }
@@ -31,9 +31,11 @@ function App() {
             console.log(err)
         })
     },[authToken])
-
+    const PriceRefund=(price)=>{
+        return [(parseFloat(price)*parseFloat(currency.coefficient)),currency.value]
+    }
     return (
-        <MainContext.Provider value={{ data, setData, loading, setLoading, error, setError, currency, setCurrency ,authToken, setAuthToken,UserData, setUserData,Citys, setCitys}}>
+        <MainContext.Provider value={{ data, setData, loading, setLoading, error, setError, currency, setCurrency ,authToken, setAuthToken,UserData, setUserData,Citys, setCitys,PriceRefund}}>
             <RouterProvider router={router} />
         </MainContext.Provider>
     );

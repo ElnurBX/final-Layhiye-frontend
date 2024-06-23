@@ -57,6 +57,7 @@ const HeaderLogin = () => {
                             onBlur={handleBlur}
                             value={values.email}
                             placeholder='Email or Username'
+                             autoComplete="current-password"
                         />
                         {errors.email && touched.email && <div className="error">{errors.email}</div>}
                         <input
@@ -66,6 +67,7 @@ const HeaderLogin = () => {
                             onBlur={handleBlur}
                             value={values.password}
                             placeholder='Password'
+                            autoComplete="current-password"
                         />
                         {errors.password && touched.password && <div className="error">{errors.password}</div>}
                         <button type="submit" className='btn btn-primary rounded-pill' disabled={isSubmitting}>

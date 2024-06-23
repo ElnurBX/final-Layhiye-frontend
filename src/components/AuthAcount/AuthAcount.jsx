@@ -6,8 +6,7 @@ import MainContext from '../../context/context';
 const AuthAcount = () => {
     const [dropdowns, setDropdowns] = useState(false)
     const { setAuthToken,UserData } = useContext(MainContext);
-    console.log(UserData);
-    const Fotmatname=(str)=>{
+      const Fotmatname=(str)=>{
         
         if(String(str).length>10){
             return str.slice(0,10) + '...'

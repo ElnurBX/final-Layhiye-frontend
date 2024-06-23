@@ -1,14 +1,17 @@
 
-import React, { useContext } from 'react'
+import React from 'react'
 import { Helmet } from 'react-helmet'
-import MainContext from '../../../context/context'
+
 import { Banner } from '../../../components/sections/Banner/Banner'
 import SearchSections from '../../../components/sections/SearchSections/SearchSections'
 import SpecialOffer from '../../../components/sections/SpecialOffer/SpecialOffer'
 import Destinations from '../../../components/sections/Destinations/Destinations'
+import PlanYourNextStaycation from '../../../components/sections/PlanYourNextStaycation/PlanYourNextStaycation'
+import Recommended from '../../../components/sections/Recommended/Recommended'
+import Subscribe from '../../../components/sections/Subscribe/Subscribe'
     
     const Home = () => {
-        const {data,setdata} = useContext(MainContext)
+
         return (
         <>
                 <Helmet>
@@ -19,6 +22,9 @@ import Destinations from '../../../components/sections/Destinations/Destinations
                     <SearchSections/>
                     <SpecialOffer/>
                     <Destinations/>
+                    <PlanYourNextStaycation/>
+                    <Recommended/>
+                    <Subscribe/>
                 </main>
         </>
         )

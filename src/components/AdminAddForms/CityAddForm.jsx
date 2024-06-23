@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import FormSelectElements from './FormSelectedElements/FormSelectElements';
 import './AdminAddForm.scss';
-import FormSelectOne from './FormSelectedElements/FormSelectOne';
+
 
 
 const CityAddForm = () => {
@@ -40,7 +40,7 @@ const CityAddForm = () => {
                         setId(newRoomId);
                         alert('Added successfully');
                         setSubmitting(false);
-                        
+             
                     }).catch(error => {
                         alert('Failed to add room');
                         setSubmitting(false);
@@ -127,7 +127,7 @@ const CityAddImgForm = ({ id, resetAllForms,setId  }) => {
                         formData.append('imgs', img);
                     });
 
-                    axios.post(`http://localhost:8080/api/upload/citys/${id}`, formData, {
+                    axios.post(`http://localhost:8080/api/upload/Citys/${id}`, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
@@ -152,7 +152,7 @@ const CityAddImgForm = ({ id, resetAllForms,setId  }) => {
                     <>
                     <form className='adminAddForm'  onSubmit={handleSubmit}>
                         
-                        <button type='button' className='btn btn-light Remove' onClick={() => removeItem(id)}><i class="fa-solid fa-arrow-left"></i>  Remove</button>
+                        <button type='button' className='btn btn-light Remove' onClick={() => removeItem(id)}><i className="fa-solid fa-arrow-left"></i>  Remove</button>
                         <label htmlFor="mainImg"> Main Image:</label>
                         <input
                             id='mainImg'
@@ -173,11 +173,11 @@ const CityAddImgForm = ({ id, resetAllForms,setId  }) => {
                             }}
                         />
                         <div className=" d-flex gap-1">
-                            <button className='btn btn-light' type="submit" disabled={isSubmitting}>
-                                Submit <i class="fa-solid fa-check"></i>
+                            <button className='btn btn-light' type="submit" >
+                                Submit <i className="fa-solid fa-check"></i>
                             </button>
                             <button className='btn btn-light' onClick={()=>NoPhotoNext(resetForm)}>
-                               Next <i class="fa-solid fa-arrow-right"></i>
+                               Next <i className="fa-solid fa-arrow-right"></i>
                             </button>
                         </div>
                     </form>
