@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import axios from "axios";
 import MainContext from "../../../context/context";
 import "./Destinations.scss";
+import { Link } from "react-router-dom";
 // Custom Arrow Components
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -91,7 +92,7 @@ function Destinations() {
                   alt={title}
                 />
               </div>
-              <p>{title}</p>
+              <Link className="text-decoration-none d-block p" to={`/details/city/${_id}`}>{title}</Link>
               <span>{hotels.length} Hotels</span>
             </div>
           );

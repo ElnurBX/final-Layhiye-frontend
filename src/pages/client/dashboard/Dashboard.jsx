@@ -5,9 +5,9 @@ import MainContext from '../../../context/context'
 const ClientDashboard = () => {
     const {UserData} = useContext(MainContext)
   return (
-    <div>
+    <main>
         <ProfileUpload userId={UserData._id} />
-    </div>
+    </main>
   )
 }
 

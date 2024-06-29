@@ -41,10 +41,10 @@ export const Subdashbourd = ({ content, keyName }) => {
             )
         }
         else if(key === 'description'){
-            const x = content.slice(0, 20)
+    
 
             return <details title={content}>
-                <summary>{x}</summary>
+                <summary>{"description"}</summary>
                 <p>{content}</p>
                 </details>
         }

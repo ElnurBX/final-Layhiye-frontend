@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import './AuthAcount.scss'
 import { Link } from 'react-router-dom'
 import Cookies from 'js-cookie'; 
 import MainContext from '../../context/context';
 const AuthAcount = () => {
-    const [dropdowns, setDropdowns] = useState(false)
-    const { setAuthToken,UserData } = useContext(MainContext);
+
+    const { setAuthToken,UserData ,authDropdown, setAuthDropdown} = useContext(MainContext);
       const Fotmatname=(str)=>{
         
         if(String(str).length>10){
@@ -16,7 +16,7 @@ const AuthAcount = () => {
     }
     return (
         <div className='Profile-dropdowns'>
-            <button className='btn ProfileBtn  ' onClick={() => setDropdowns(!dropdowns)}> 
+            <button className='btn ProfileBtn  ' onClick={() => setAuthDropdown(!authDropdown)}> 
                 {
                     UserData.profileImage ? (
                         <img className='profileimg' src={`http://localhost:8080/uploads/users/${UserData.profileImage}`} alt="Profile" />
@@ -26,7 +26,7 @@ const AuthAcount = () => {
                 }
                    
             </button>
-            <div className={dropdowns ? 'd-block ProfileDropdown' : 'd-none BasketDropdown'}>
+            <div className={authDropdown ? 'd-block ProfileDropdown' : 'd-none BasketDropdown'}>
                 <div className="profile d-flex justify-content-around align-items-center">
                 {UserData.profileImage ? (
                 <img src={`http://localhost:8080/uploads/users/${UserData.profileImage}`} alt="Profile" />
@@ -37,6 +37,7 @@ const AuthAcount = () => {
                 </div>
                <Link className='btn' to={'client/dashboard'}>Dashboard</Link><br />
                <Link className='btn' to={'client/orderHistory'}>Booking History</Link>
+               <Link className='btn' to={'client/Wishlist'}>Wishlist</Link>
                <br />
                <hr />
                 <button className='btn' onClick={() =>{

@@ -10,6 +10,12 @@ import ClientDashboard from "../pages/client/dashboard/Dashboard"
 import Test from "../pages/site/test/Test"
 import AboutPage from "../pages/site/AboutPage/AboutPage"
 import ContactPage from "../pages/site/ContactPage/ContactPage"
+import LocalExpert from "../pages/site/LocalExpert/LocalExpert"
+import Register from "../pages/site/Register/Register"
+import WishlistPage from "../pages/client/WishlistPage/WishlistPage"
+import VerifyPage from "../pages/site/VerifyPage/VerifyPage"
+import CityDetailsPage from "../pages/site/detailsPages/City/CityDetailsPage"
+import HotelDetailsPage from "../pages/site/detailsPages/Hotel/HotelDetailsPage"
 
 const ROUTES =[
     {
@@ -27,10 +33,29 @@ const ROUTES =[
                 path:"contact",
                 element:<ContactPage/>
             }
+            ,{
+                path:"/localexpert",
+                element:<LocalExpert/>
+            },{
+                path:"/Register",
+                element:<Register/>
+            }
             ,
             {
                 path:"/test",
                 element:<Test/>
+            },
+            {
+                path:"/details/city/:id",
+                element:<CityDetailsPage/>
+            },{
+                path:"/details/hotel/:id",
+                element: <HotelDetailsPage/>
+            }
+            ,
+            {
+                path:"/VerifyPage/:token",
+                element:<VerifyPage/>
             }
         ]
     },{
@@ -44,6 +69,10 @@ const ROUTES =[
             {
                 path:"orderHistory",
                 element:<Dashboard/>
+            },
+            {
+                path:"Wishlist"
+                ,element:<WishlistPage/>
             }
         ]
     },

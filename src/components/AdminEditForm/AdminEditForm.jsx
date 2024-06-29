@@ -120,7 +120,22 @@ const AdminEditForm = (ids , Model, İnitialAllValues , İnitialKeyValues ) => {
                             </>
                             :<></>
                             }
-
+                            {
+                            checkinput('youtubeLink') ?
+                            <>
+                            <label htmlFor="youtubeLink" className="form-label">Youtube Link</label>
+                            <input
+                                id="youtubeLink"
+                                type="text"
+                                name="youtubeLink"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.youtubeLink}
+                            />
+                            {errors.youtubeLink && touched.youtubeLink && errors.youtubeLink}
+                            </>
+                            :<></>
+                            }
                             {
                             checkinput('beds') ?
                             <>

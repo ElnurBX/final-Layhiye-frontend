@@ -132,7 +132,7 @@ const Clientsay = () => {
                 <Slider {...settings}>
                     {
                         OurClientsSay.map((info,index) => (
-                            <div className="p-1">
+                            <div key={index} className="p-1">
                                 <div className=" Clientsay__content" key={index}>
                                 <p className='text-dark pb-4 fs-6'>{info.discrption}</p>
                                 <div className="star d-flex gap-1 pb-3 ">

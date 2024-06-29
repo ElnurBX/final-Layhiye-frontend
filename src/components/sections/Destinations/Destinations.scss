@@ -23,10 +23,14 @@
       }
     }
 
-    p {
+    .p {
       font-size: 1.2rem;
       margin: 10px 0 5px;
       font-weight: 700;
+      color: black;
+      &:hover{
+        color: #3b71fe;
+      }
     }
 
     span {

@@ -32,7 +32,8 @@ const CityAddForm = () => {
                     price: 0,
                     facilities: [],
                     city: [],
-                    Rooms: []
+                    Rooms: [],
+                    description: ''
                 }}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     axios.post('http://localhost:8080/api/citys', values).then(res => {
@@ -82,7 +83,17 @@ const CityAddForm = () => {
                             />
                             {errors.loc && touched.loc && errors.loc}
 
-
+                            <label htmlFor="description" className="form-label">Description</label>
+                            <input
+                                id="description"
+                                type="text"
+                                placeholder='Description'
+                                name="description"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.description}
+                            />
+                            {errors.description && touched.description && errors.description}
                             <FormSelectElements name={"Hotels"} model={Hotels} FormikFunk={setFieldValue} />
                             <button className='btn btn-light' type="submit" disabled={isSubmitting}>
                                 Submit

@@ -1,0 +1,51 @@
+.HotelBookInquiry{
+    position: sticky;
+    top: 10px;
+    
+    &__container{
+        background-color: #fff;
+        z-index: 100;
+        border: 1px solid #e8e8e8;
+        box-shadow:  0 0 5px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        padding: 20px;
+    }
+    &__buttons{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .deactive{
+            background: #e8e8e8;
+            color: black;
+            border: 1px solid #e8e8e8;
+            cursor: pointer;
+            border-radius: 8px;
+            background: #e8e8e8;
+        }
+        .active{
+            background: #3b71fe;
+            color: black;
+            border: 1px solid #e8e8e8;
+            cursor: pointer;
+            border-radius: 8px;
+            &:hover{
+              }  background: #e8e8e8;
+        }
+    }
+    &__content{
+        padding: 20px;
+        p{
+            color: #888888;
+        }
+        .form-control{
+            input,
+            textarea {
+                width: 100%;
+                margin-bottom: 10px;
+                border-radius: 10px;
+                padding: 10px;
+                border: 1px solid #dedede;
+            }
+        }
+    }
+}

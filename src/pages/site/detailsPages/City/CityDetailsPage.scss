@@ -1,0 +1,20 @@
+.CityDetailsPage{
+    font-family: "DM Sans", sans-serif;
+    &__description{
+        color: #727272;
+        font-family: "DM Sans", Sans-serif;
+        font-weight: 400;
+        line-height: 26px;
+
+    }
+}
+
+.CityCaruselCounter{
+    position: absolute;
+    bottom: 15%;
+    padding: 15px;
+    background-color: #00000064;
+    border-radius: 5px;
+    z-index: 100;
+    left: 50%;
+}

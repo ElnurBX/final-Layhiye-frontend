@@ -13,7 +13,7 @@ const Header = () => {
     const { currency, setCurrency ,authToken } = useContext(MainContext);
     const currencyLogo = useMemo(() => ['€', '$','₼'], []);
     useEffect(() => {
-        axios.get('https://api.fastforex.io/fetch-multi?from=USD&to=EUR,USD,AZN&api_key=9c50c6e5a3-299d6b666b-sf6l85')
+        axios.get('https://api.fastforex.io/fetch-multi?from=USD&to=EUR,USD,AZN&api_key=5ee359f781-8959c78298-sfmi6d')
             .then((response) => {
                 setCurrencies(Object.entries(response.data.results));
                 if (localStorage.getItem('currency')) {
@@ -78,6 +78,7 @@ const Header = () => {
                                 <li><Link to='/about'>About</Link></li>
                                 <li><Link to='/contact'>Contact</Link></li>
                                 <li><Link to='/search'>Search</Link></li>
+                                <li><Link to='/localexpert'>Local Expert</Link></li>
                             </ul>
                         </nav>
                     </div>
@@ -113,6 +114,7 @@ const Header = () => {
                             <li><Link to='/about'>About</Link></li>
                             <li><Link to='/contact'>Contact</Link></li>
                             <li><Link to='/search'>Search</Link></li>
+                            <li><Link to='/localexpert'>Local Expert</Link></li>
                         </ul>
                     </nav>
                 </div>
@@ -133,7 +135,8 @@ const Header = () => {
                     </div>
                     <BasketDropdowns />
                    {
-                    authToken ? <AuthAcount/>:  <button type="button" className="basketBtn " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    authToken ? <AuthAcount/>:  
+                    <button type="button" className="basketBtn " data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i className="fa-regular fa-user"></i>
                     </button>
                    }

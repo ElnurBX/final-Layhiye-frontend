@@ -1,0 +1,70 @@
+.HotelDetailsPage{
+    font-family: "DM Sans", sans-serif;
+    .star{
+        color: #FA5636;
+        font-size: 13px;
+    }
+    &__info{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid #b4b4b4;
+        .ReviewsCount{
+            padding: 10px;
+            border: 1px solid #b8ccff;
+            display: inline-block;
+            padding: 4px 6px;
+            border-radius: 5px;
+            background: #f9fbff;
+            color: #3b71fe;
+            font-weight: 700;
+            margin-right: 12px;
+        }
+        &__heart{
+        
+    }
+    }
+    &__description{
+        p{color: #727272;}
+        border-bottom:1px solid #b4b4b4;
+        line-height: 24px;
+        }
+    &__Facilities{
+        
+        &__item{
+            display: flex;
+            align-items: center;
+
+            gap: 20px;
+            width: 170px;
+            height: 50px;
+
+            img{
+                width: 30px;
+                height: 30px;
+            }
+        }}
+        &__rules{
+            border-bottom:1px solid #b4b4b4;
+        }
+        &__availability{
+            border-bottom:1px solid #b4b4b4;
+        }
+        &__reviews{
+            border-bottom:1px solid #b4b4b4;
+        }
+}   
+.heart-btn{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #a2a2a2 !important;
+            
+            path{
+                border: 1px 1px 5px 0px #000000;
+            }
+        }

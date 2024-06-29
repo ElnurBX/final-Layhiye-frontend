@@ -34,7 +34,8 @@ const HotelAddForm = () => {
                     city: [],
                     rooms: [],
                     partners: [],
-                    rules: []
+                    rules: [],
+                    youtubeLink: ''
                 }}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     setTimeout(() => {
@@ -114,7 +115,16 @@ const HotelAddForm = () => {
                                 min={0}
                             />
                             {errors.stars && touched.stars && errors.stars}
-
+                            <label htmlFor="youtubeLink" className="form-label">Youtube Link</label>
+                            <input
+                                id="youtubeLink"
+                                type="text"
+                                name="youtubeLink"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.youtubeLink}
+                            />
+                            {errors.youtubeLink && touched.youtubeLink && errors.youtubeLink}
                             <RulesAddElement rules={rules} name={"rules"} setRules={setRules} FormikFunk={setFieldValue} />
                             <FormSelectElements name={"Facilities"} model={facilities} FormikFunk={setFieldValue} />
                             <FormSelectElements name={"Rooms"} model={rooms} FormikFunk={setFieldValue} />
