@@ -3,9 +3,9 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import './PageNotation.scss';
 
-const PageNotation = ({ Title, Type }) => {
+const PageNotation = ({ Title, Type , room , data }) => {
     const [filtered, setFiltered] = useState([]);
-
+    const [hotel, sethotel] = useState([]);
     const FIltered = useCallback((Country, Title) => {
         for (let i = 0; i < Country.length; i++) {
             for (let j = 0; j < Country[i].city.length; j++) {
@@ -18,6 +18,7 @@ const PageNotation = ({ Title, Type }) => {
                     for (let k = 0; k < Country[i].city[j].hotels.length; k++) {
                         if (Country[i].city[j].hotels[k].title === Title) {
                             setFiltered(Country[i]);
+                            sethotel(Country[i].city[j].hotels[k]);
                             return Country[i].title;
                         }
                     }
@@ -39,7 +40,11 @@ const PageNotation = ({ Title, Type }) => {
                 <Link className='text-decoration-none text-dark' to={`/${filtered.title}`}>
                     {filtered.title}
                 </Link> <span></span> 
-                <Link>{Title}</Link>
+                <Link to={Type==='hotel' ?  `/details/hotel/${hotel._id}`:`/details/city/${filtered._id}`}>{Title}</Link>
+                <>
+                    {room ? <span></span> : null}
+                    {room ? <Link className='text-secondary'>{room.title}</Link> : null}
+                </>
             </h3>
         </div>
     );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './HotelGallery.scss';
 
-const HotelGallery = ({ imgs, youtubeLink }) => {
+const HotelGallery = ({ imgs, youtubeLink,Type }) => {
     const [selectedPhoto, setSelectedPhoto] = useState('');
     const [modal, setModal] = useState(false);
     const [fullImageIndex, setFullImageIndex] = useState(0);
@@ -26,6 +26,7 @@ const HotelGallery = ({ imgs, youtubeLink }) => {
     };
 
     const getYouTubeEmbedUrl = (url) => {
+        if(!youtubeLink) return null
         const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/;
         const match = url.match(regExp);
         return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : null;
@@ -40,15 +41,15 @@ const HotelGallery = ({ imgs, youtubeLink }) => {
                     <div className="row">
                         <div className="col-12 col-md-4 ps-0">
                             <div className="HotelGallery__main__img" onClick={() => handleImageClick(mainImage)}>
-                                <img src={`http://localhost:8080/uploads/hotels/${mainImage}`} alt="Main view of hotel" />
+                                <img src={`http://localhost:8080/uploads/${Type}/${mainImage}`} alt="Main view of hotel" />
                             </div>
                         </div>
                         <div className="col-12 col-md-8 d-md-block d-none pe-0">
                             <div className="container">
                                 <div className="row row-gap-3">
-                                    {otherImages.map((img, index) => (
+                                    {otherImages.splice(0, 4).map((img, index) => (
                                         <div className="HotelGallery__main__imgs col-6" key={img} onClick={() => handleImageClick(img)}>
-                                            <img src={`http://localhost:8080/uploads/hotels/${img}`} alt={`Additional view ${index + 1} of hotel`} />
+                                            <img src={`http://localhost:8080/uploads/${Type}/${img}`} alt={`Additional view ${index + 1} of hotel`} />
                                         </div>
                                     ))}
                                 </div>
@@ -58,18 +59,18 @@ const HotelGallery = ({ imgs, youtubeLink }) => {
                 </div>
                 <div className="OnePhoto">
                     <div className={modal ? "OnePhoto__Modal d-flex" : "OnePhoto__Modal d-none"}>
-                        {selectedPhoto && <img src={`http://localhost:8080/uploads/hotels/${selectedPhoto}`} alt="Selected view of hotel" />}
+                        {selectedPhoto && <img src={`http://localhost:8080/uploads/${Type}/${selectedPhoto}`} alt="Selected view of hotel" />}
                         <div className="OnePhoto__Modal__Close" onClick={() => setModal(false)}>
                             <i className="fa-solid fa-xmark"></i>
                         </div>
                     </div>
                 </div>
                 <div className="HotelGallery__btns">
-                    {youtubeLink && (
+                    {youtubeLink ?<> (
                         <button className='HotelGallery__btns__btn me-3 rounded-circle' onClick={() => setYoutubeLinkModal(true)}>
                             <i className="fa-solid fa-play"></i>
                         </button>
-                    )}
+                    )</>: <></>}
                     <button onClick={() => setGalleryModal(true)} className='HotelGallery__btns__btn rounded-pill'>
                         <i className="fa-solid fa-table-cells-large"></i> All photos
                     </button>
@@ -80,7 +81,7 @@ const HotelGallery = ({ imgs, youtubeLink }) => {
                             <i className="fa-solid fa-arrow-left bg-light p-1 rounded-circle"></i>
                         </button>
                         <div className="OnePhoto__Modal__img">
-                            <img src={`http://localhost:8080/uploads/hotels/${imgs[fullImageIndex]}`} alt={`Gallery view ${fullImageIndex + 1} of hotel`} />
+                            <img src={`http://localhost:8080/uploads/${Type}/${imgs[fullImageIndex]}`} alt={`Gallery view ${fullImageIndex + 1} of hotel`} />
                         </div>
                         <button className='btn right' onClick={() => handleNavigation('right')} aria-label="Next image">
                             <i className="fa-solid fa-arrow-right bg-light p-1 rounded-circle"></i>
@@ -90,7 +91,8 @@ const HotelGallery = ({ imgs, youtubeLink }) => {
                         </div>
                     </div>
                 </div>
-                <div className="OnePhoto">
+                {youtubeLink?<>
+                    <div className="OnePhoto">
                     <div className={youtubeLinkModal ? "OnePhoto__Modal d-flex" : "OnePhoto__Modal d-none"}>
                         <iframe
                             src={embedUrl}
@@ -104,6 +106,8 @@ const HotelGallery = ({ imgs, youtubeLink }) => {
                         </div>
                     </div>
                 </div>
+                </>:<></>}
+               
             </div>
         </div>
     );

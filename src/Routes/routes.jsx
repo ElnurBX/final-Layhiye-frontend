@@ -16,6 +16,8 @@ import WishlistPage from "../pages/client/WishlistPage/WishlistPage"
 import VerifyPage from "../pages/site/VerifyPage/VerifyPage"
 import CityDetailsPage from "../pages/site/detailsPages/City/CityDetailsPage"
 import HotelDetailsPage from "../pages/site/detailsPages/Hotel/HotelDetailsPage"
+import RoomDetailsPage from "../pages/site/detailsPages/Room/RoomDetailsPage"
+import Search from "../pages/site/Search/Search"
 
 const ROUTES =[
     {
@@ -56,6 +58,19 @@ const ROUTES =[
             {
                 path:"/VerifyPage/:token",
                 element:<VerifyPage/>
+            },
+            {
+                path:"/details/hotel/:hotelId/room/:roomId",
+                element:<RoomDetailsPage/>
+            }
+            ,
+            {
+                path:"/search",
+                element:<Search/>
+            },
+            {
+                path:"/search/:country",
+                element:<Search/>
             }
         ]
     },{

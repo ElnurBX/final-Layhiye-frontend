@@ -94,7 +94,7 @@ const HotelDetailsPage = () => {
     return (
         <main className="HotelDetailsPage">
             <PageNotation Title={hotel.title} Type="hotel" />
-            <HotelGallery imgs={hotel.imgs} youtubeLink={hotel.youtubeLink} />
+            <HotelGallery Type={"hotels"} imgs={hotel.imgs} youtubeLink={hotel.youtubeLink} />
             <div className="container pt-5">
                 <div className="row mb-5">
                     <div className="col-12 col-md-8">
@@ -159,7 +159,7 @@ const HotelDetailsPage = () => {
                             <h2 className='fs-2  fw-bold mb-3'>Availability</h2>
                             {
                                 hotel.rooms.map((room, index) => {
-                                    return <RoomCardV1 key={index} room={room} />
+                                    return <RoomCardV1 hotel={hotel} key={index} room={room} />
                                 })
                             }
                         </div>

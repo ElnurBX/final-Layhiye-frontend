@@ -3,8 +3,8 @@ import './RoomCardV1.scss';
 import { Link } from 'react-router-dom';
 import MainContext from '../../../context/context';
 
-const RoomCardV1 = ({ room }) => {
-    const roomDetailsPath = `/rooms/${room.id}`;
+const RoomCardV1 = ({ room ,hotel}) => {
+    const roomDetailsPath = `/details/hotel/${hotel._id}/room/${room._id}`;
     const {PriceRefund}=useContext(MainContext)
     return (
         <div className='RoomCardV1'>
@@ -26,7 +26,7 @@ const RoomCardV1 = ({ room }) => {
                             </div>
                             <div className="col-12 col-md-5 p-5 d-flex justify-content-center align-content-center flex-column row-gap-2">
                                 <p><span className='fw-bolder '>{PriceRefund(parseFloat(room.price))}</span>/night</p>
-                                <Link className='btn btn-primary fs-6'>Room Detail</Link>
+                                <Link to={roomDetailsPath} className='btn btn-primary fs-6'>Room Detail</Link>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@ const RoomCardV1 = ({ room }) => {
 
 const renderRoomFeature = (icon, description, className) => (
     <div className="col-3">
-        <div className={`RoomCardV1__item ${className}`}>
+        <div className={`RoomCardV1__item ${className} flex-column`}>
             <div className="RoomCardV1__item__logo">
                 <i className={`fa-solid ${icon}`}></i>
             </div>
