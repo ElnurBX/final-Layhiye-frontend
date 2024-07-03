@@ -20,7 +20,7 @@ const Location = ({ data, setdata }) => {
                 list.push(countryItem.title);
             }
 
-            if (countryItem && Array.isArray(countryItem.city)) {  // Düzeltme: 'citys' yerine 'city'
+            if (countryItem && Array.isArray(countryItem.city)) {
                 countryItem.city.forEach((cityItem) => {
                     if (cityItem && cityItem.title) {
                         list.push(cityItem.title);

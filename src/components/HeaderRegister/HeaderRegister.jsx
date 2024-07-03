@@ -3,7 +3,7 @@
     import { Link } from 'react-router-dom';
     import './HeaderRegister.scss';
     import axios from 'axios';
-
+    import { ToastContainer, toast } from 'react-toastify';
     const HeaderRegister = ({ setAuthModal}) => {
     return (
         <div className='headerRegister'>
@@ -32,12 +32,13 @@
                 console.log(res);
                 setAuthModal(true);
                 setSubmitting(false);
-
+                toast.success('Registration successful send email please check your email');
                 })
                 .catch(err => {
                 console.log(err);
                 setErrors({ apiError: 'Registration failed. Please try again.' });
                 setSubmitting(false);
+                toast.error('Registration failed. Please try again.');
                 });
             }}
             >
@@ -108,6 +109,7 @@
             </form>
             )}
         </Formik>
+        <ToastContainer />
         </div>
     );
     };

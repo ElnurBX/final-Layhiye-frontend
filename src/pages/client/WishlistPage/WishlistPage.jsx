@@ -6,14 +6,14 @@ const WishlistPage = () => {
     const  {UserData} = useContext(MainContext)
     console.log(UserData);
     return (
-        <main>
+        <main className='w-100 pt-3'>
             <div className="container">
                 <div className="row">
                     {
                         UserData ?
                         <>
                         {
-                            UserData.Wishlists ?
+                            UserData.Wishlists  ?
                             <>
                                 {
                                     UserData.Wishlists.map((item,index)=>{

@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie'; // Import js-cookie library
 import MainContext from '../../context/context';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const HeaderLogin = () => {
     const { setAuthToken } = useContext(MainContext);
+
     const handleLogin = async (values, { setSubmitting }) => {
         try {
             const response = await axios.post('http://localhost:8080/api/auth/login', values);
@@ -15,10 +17,10 @@ const HeaderLogin = () => {
             Cookies.set('auth_token', authToken, { expires: 7 });
             const cookieValue = Cookies.get('auth_token');
             setAuthToken(cookieValue);
-            alert('Login successful');
+            toast.success('Login successful');
         } catch (error) {
             console.error('Login error:', error);
-            alert('Login failed. Please check your credentials.');
+            toast.error('Login failed. Please check your credentials');
         } finally {
             setSubmitting(false); 
         }
@@ -38,7 +40,7 @@ const HeaderLogin = () => {
                     }
                     return errors;
                 }}
-                onSubmit={handleLogin} // Pass handleLogin function to onSubmit
+                onSubmit={handleLogin}
             >
                 {({
                     values,
@@ -83,6 +85,7 @@ const HeaderLogin = () => {
                     </form>
                 )}
             </Formik>
+            <ToastContainer />
         </div>
     );
 };

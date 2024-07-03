@@ -6,7 +6,7 @@ import './assets/scss/base/reset.scss';
 import Cookies from 'js-cookie'; 
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
     const [currency, setCurrency] = useState({ name: "USD", value: "$", coefficient: 1 });
     const [loading, setLoading] = useState(true);
@@ -50,7 +50,6 @@ function App() {
             axios.put(`http://localhost:8080/api/users/${UserData._id}`, { Wishlists: updatedWishlists })
                 .then((res) => {
                     setUserData(prevState => ({ ...prevState, Wishlists: updatedWishlists }));
-                    alert('Removed from Wishlists');
                 })
                 .catch((err) => {
                     console.error('Error updating Wishlists:', err);
@@ -60,7 +59,6 @@ function App() {
             axios.put(`http://localhost:8080/api/users/${UserData._id}`, { Wishlists: updatedWishlists })
                 .then((res) => {
                     setUserData(prevState => ({ ...prevState, Wishlists: updatedWishlists }));
-                    alert('Added to Wishlists');
                 })
                 .catch((err) => {
                     console.error('Error updating Wishlists:', err);
@@ -79,9 +77,11 @@ function App() {
         return [(parseFloat(price)*parseFloat(currency.coefficient)).toFixed(2),currency.value]
     }
     return (
+        <>
         <MainContext.Provider value={{ data, setData, loading, setLoading, error, setError, currency, setCurrency ,authToken, setAuthToken,UserData, setUserData,Citys, setCitys,PriceRefund,authDropdown, setAuthDropdown,AddWishList,isItemInWishList}}>
             <RouterProvider router={router} />
         </MainContext.Provider>
+        </>
     );
 }
 

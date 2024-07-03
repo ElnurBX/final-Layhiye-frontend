@@ -13,7 +13,7 @@ const Header = () => {
     const { currency, setCurrency ,authToken } = useContext(MainContext);
     const currencyLogo = useMemo(() => ['€', '$','₼'], []);
     useEffect(() => {
-        axios.get('https://api.fastforex.io/fetch-multi?from=USD&to=EUR,USD,AZN&api_key=5ee359f781-8959c78298-sfmi6d')
+        axios.get('https://api.fastforex.io/fetch-multi?from=USD&to=EUR,USD,AZN&api_key=13287991ea-dc5f6b616e-sg10fk')
             .then((response) => {
                 setCurrencies(Object.entries(response.data.results));
                 if (localStorage.getItem('currency')) {

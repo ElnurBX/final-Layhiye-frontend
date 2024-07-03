@@ -2,7 +2,7 @@ import React from 'react'
 
 const BlogCompanent = () => {
   return (
-    <div>BlogCompanent</div>
+    <div></div>
   )
 }
 

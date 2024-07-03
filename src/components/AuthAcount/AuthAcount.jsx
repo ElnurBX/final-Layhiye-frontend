@@ -31,7 +31,7 @@ const AuthAcount = () => {
                 {UserData.profileImage ? (
                 <img src={`http://localhost:8080/uploads/users/${UserData.profileImage}`} alt="Profile" />
                 ) : (
-                    <p>No profile image</p>
+                    <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png' alt="Profile"/>
                 )}
                     <p>Hi {UserData ?   Fotmatname( UserData.username) : "noname" }                 </p>
                 </div>

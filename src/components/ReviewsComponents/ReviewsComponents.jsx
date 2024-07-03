@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './ReviewsComponents.scss';
 import axios from 'axios';
 
-
+import { ToastContainer, toast } from 'react-toastify';
 export const ReviewsTable = ({ reviews }) => {
        const sum=(array)=>{ 
         let sum=0;
@@ -187,7 +187,7 @@ export const ReviewsTable = ({ reviews }) => {
 };
 
 export const ReviewForm = ({hotel,UserData}) => {
-
+    if(!UserData ) return null
     const initialValues = {
         name: '',
         email: '',
@@ -199,8 +199,7 @@ export const ReviewForm = ({hotel,UserData}) => {
         accuracy: 0,
         location: 0,
         value: 0,
-        hotel: hotel,
-        user: UserData || []
+        user:UserData || [] 
     };
 
     const validate = values => {
@@ -217,19 +216,24 @@ export const ReviewForm = ({hotel,UserData}) => {
     };
   
     const onSubmit = async (values, { setSubmitting }) => {
+        console.log("test1:" + JSON.stringify(values));
         setSubmitting(true);  
         try {
+
             const response = await axios.post('http://localhost:8080/api/Reviews', values);
+            console.log("test 2");
+            console.log(JSON.stringify(response.data[response.data.length - 1]));
             const newReview = response.data[response.data.length - 1];
+            console.log("test2:" + JSON.stringify(newReview));
             let reviewsData = [...hotel.reviews , newReview];
             console.log(reviewsData);
             await axios.put(`http://localhost:8080/api/Hotels/${hotel._id}`, {reviews: reviewsData });
             console.log("success");
     
-            alert('Review submitted successfully!');
+            toast.success('Review submitted successfully!');
         } catch (error) {
             console.error('Submitting review failed:', error);
-            alert('Failed to submit review. Please try again.');
+            toast.error('Failed to submit review. Please try again.');
         }
     };
     
@@ -278,6 +282,7 @@ export const ReviewForm = ({hotel,UserData}) => {
                 </Form>
             )}
         </Formik>
+        <ToastContainer/>
         </details>
     );
 };
@@ -393,7 +398,7 @@ export const ReviewsBody = ({reviews, UserData }) => {
                                         <span>{review.likes ? review.likes.length : 0}</span>
                                     </div>
                                 </div>
-                                <p>{review.content}</p>
+                                <p className='text-break'>{review.content}</p>
                             </div>
                         )}
                     </div>

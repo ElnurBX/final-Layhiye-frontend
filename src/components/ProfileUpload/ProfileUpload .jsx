@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const ProfileUpload = ({ userId }) => {
+const ProfileUpload = ({ userId ,UserData}) => {
     const [profileImage, setProfileImage] = useState(null);
 
     const handleImageChange = (e) => {
@@ -28,8 +28,16 @@ const ProfileUpload = ({ userId }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="file" name="profileImage" onChange={handleImageChange} />
-            <button type="submit">Upload</button>
+            <div className="d-flex">
+            <div className="p-3">
+                <img className='rounded-circle' width={100} height={100} src={`http://localhost:8080/uploads/users/${UserData.profileImage}`} alt="Profile" />
+            </div>
+            
+                <div className="input-group">
+                    <input  type="file" name="profileImage" onChange={handleImageChange} />
+                    <button className="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Upload</button>
+                </div>
+            </div>
         </form>
     );
 };

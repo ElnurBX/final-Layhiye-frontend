@@ -37,7 +37,7 @@ const PageNotation = ({ Title, Type , room , data }) => {
         <div className='page-notation'>
             <h3>
                 <Link to="/">Home</Link> <span></span> 
-                <Link className='text-decoration-none text-dark' to={`/${filtered.title}`}>
+                <Link  className='text-decoration-none text-dark' to={`/search`}>
                     {filtered.title}
                 </Link> <span></span> 
                 <Link to={Type==='hotel' ?  `/details/hotel/${hotel._id}`:`/details/city/${filtered._id}`}>{Title}</Link>

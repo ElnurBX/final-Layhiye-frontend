@@ -18,6 +18,8 @@ import CityDetailsPage from "../pages/site/detailsPages/City/CityDetailsPage"
 import HotelDetailsPage from "../pages/site/detailsPages/Hotel/HotelDetailsPage"
 import RoomDetailsPage from "../pages/site/detailsPages/Room/RoomDetailsPage"
 import Search from "../pages/site/Search/Search"
+import Checkout from "../pages/site/Checkout/Checkout"
+import History from "../pages/client/History/History"
 
 const ROUTES =[
     {
@@ -71,6 +73,10 @@ const ROUTES =[
             {
                 path:"/search/:country",
                 element:<Search/>
+            },
+            {
+                path:"/Checkout",
+                element:<Checkout/>
             }
         ]
     },{
@@ -83,10 +89,10 @@ const ROUTES =[
             },
             {
                 path:"orderHistory",
-                element:<Dashboard/>
+                element:<History/>
             },
             {
-                path:"Wishlist"
+                path:"wishlist"
                 ,element:<WishlistPage/>
             }
         ]

@@ -23,6 +23,7 @@
 }
 .BasketDropdown{
     position: absolute;
+    z-index: 1000;
     top: 100%;
     right: 0;
     width: 320px;

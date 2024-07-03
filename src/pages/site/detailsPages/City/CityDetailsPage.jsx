@@ -5,7 +5,7 @@ import PageNotation from '../../../../components/PageNotation/PageNotation';
 import CityCarusel from '../../../../components/DetailsPages/CityCarusel/CityCarusel';
 import './CityDetailsPage.scss';
 import HotelCardV1 from '../../../../components/Cards/HotelCardV1/HotelCardV1';
-import BlogCompanent from '../../../../components/BlogPage/BlogCompanent';
+// import BlogCompanent from '../../../../components/BlogPage/BlogCompanent';
 import Subscribe from '../../../../components/sections/Subscribe/Subscribe';
 
 const CityDetailsPage = () => {
@@ -109,7 +109,7 @@ const CityDetailsPage = () => {
                         }
                     </div>
                 </div>
-                <BlogCompanent/>
+                {/* <BlogCompanent/> */}
                 <Subscribe/>
             </main>
         </>

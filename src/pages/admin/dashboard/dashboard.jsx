@@ -15,6 +15,7 @@ const Dashboard = () => {
         { title: 'Users', model: 'Users' },
         { title: 'Patniors', model: 'Patniors' },
         { title: 'Country', model: 'Country' },
+        { title: 'Order', model: 'Order' },
     ];
 
     return (

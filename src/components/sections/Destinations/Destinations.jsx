@@ -4,7 +4,7 @@ import axios from "axios";
 import MainContext from "../../../context/context";
 import "./Destinations.scss";
 import { Link } from "react-router-dom";
-// Custom Arrow Components
+
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (

@@ -1,18 +1,24 @@
-
-import React from 'react'
-import Header from '../../layout/site/Header/header'
-import { Outlet } from 'react-router'
-import Footer from '../../layout/site/Footer/footer'
+import React, { useContext, useEffect } from 'react';
+import Header from '../../layout/client/header/Header';
+import { Outlet, useNavigate } from 'react-router-dom';
+import MainContext from '../../context/context';
 
 const ClientRoot = () => {
-    
-    return (
-        <div>
-            <Header/>
-            <Outlet/>
-            <Footer/>
-        </div>
-    )
-}
+    const { authToken } = useContext(MainContext);
+    const navigate = useNavigate();
 
-export default ClientRoot
+    useEffect(() => {
+        if (!authToken) {
+            navigate('/');
+        }
+    }, [authToken, navigate]);
+
+    return (
+        <div className='d-flex'>
+            <Header />
+            <Outlet />
+        </div>
+    );
+};
+
+export default ClientRoot;

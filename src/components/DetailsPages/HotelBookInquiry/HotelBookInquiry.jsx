@@ -65,7 +65,7 @@ const HotelBookInquiry = ({hotel}) => {
             {
                 value ?
                 <div className="HotelBookInquiry__content">
-                <p>From <span className='text-black'>{hotel.rooms[0].price}</span>/night <div  className='d-inline' style={{color:'#ffb21d'}}> <i className="fa-solid fa-star"></i></div> <span className='text-black'>{averageRating(hotel.reviews).mainCount.toFixed(1)}</span> <span >({hotel.reviews.length} reviews)</span></p>
+                <p>From <span className='text-black'>{hotel.rooms[0].price}</span>/night <span  className='d-inline' style={{color:'#ffb21d'}}> <i className="fa-solid fa-star"></i></span> <span className='text-black'>{averageRating(hotel.reviews).mainCount.toFixed(1)}</span> <span >({hotel.reviews.length} reviews)</span></p>
                 <div className="border rounded-4 mt-3">
                     <div className="border-bottom ">
                             <Calendar/>
